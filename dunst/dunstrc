@@ -1,0 +1,65 @@
+[global]
+monitor = 0
+follow = mouse
+width = 420
+height = (0, X)
+origin = top-right
+offset = (15, 15)
+scale = 0
+notification_limit = 3
+
+progress_bar = true
+progress_bar_height = 6
+progress_bar_frame_width = 0
+
+padding = 16
+horizontal_padding = 16
+text_icon_padding = 12
+frame_width = 2
+frame_color = "#6272a4"
+separator_color = frame
+separator_height = 2
+
+font = CaskaydiaCove Nerd Font 10
+line_height = 0
+markup = full
+format = "<b>%s</b>\n%b"
+
+alignment = left
+vertical_alignment = center
+ellipsize = middle
+show_age_threshold = 60
+
+idle_threshold = 999999
+ignore_newline = no
+sticky_history = yes
+history_length = 20
+
+transparency = 0
+corner_radius = 10
+
+mouse_left_click = close_current
+mouse_middle_click = do_action
+mouse_right_click = close_all
+
+[urgency_low]
+background = "#282a36"
+foreground = "#f8f8f2"
+timeout = 5
+frame_color = "#44475a"
+
+[urgency_normal]
+background = "#282a36"
+foreground = "#f8f8f2"
+timeout = 5
+frame_color = "#bd93f9"
+
+[urgency_critical]
+background = "#ff5555"
+foreground = "#f8f8f2"
+timeout = 0
+frame_color = "#ff5555"
+
+[fullscreen_delay_everything]
+fullscreen = delay
+

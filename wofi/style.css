@@ -1,0 +1,67 @@
+/* ~/.config/wofi/style.css - Dracula Theme (GTK Compatible) */
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+}
+
+window {
+    background-color: #282A36;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+#input {
+    background-color: #44475A;
+    color: #F8F8F2;
+    border: none;
+    border-radius: 6px;
+    margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+    box-shadow: none;
+}
+
+#inner-box {
+    background-color: #282A36;
+}
+
+#outer-box {
+    margin: 5px;
+}
+
+#entry {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    color: #F8F8F2;
+}
+
+#entry:hover {
+    background-color: #BD93F9;
+    /* Highlight on mouse hover */
+    color: #282A36;
+    font-weight: bold;
+}
+
+#entry:selected {
+    background-color: #BD93F9;
+    color: #282A36;
+    font-weight: bold;
+}
+
+#text {
+    padding-left: 10px;
+}
+
+#text:selected {
+    background-color: transparent;
+}
+
+#img:selected {
+    background-color: transparent;
+}
+
+#scroll {
+    border: none;
+    padding: 0;
+}

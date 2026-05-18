@@ -1,0 +1,155 @@
+{
+    "layer": "top",
+    "position": "top",
+    "mode": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "height": 0,
+
+    "modules-left": [
+        "custom/launcher",
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "tray",
+        "memory",
+        "custom/cava",
+        "pulseaudio",
+        "custom/weather",
+        "network",
+        "battery",
+        "custom/power"
+    ],
+
+    "custom/launcher": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "~/.config/wofi/scripts/launch.sh"
+    },
+
+    "hyprland/workspaces": {
+        "disable-scroll": false,
+        "all-outputs": false,
+        "move-to-monitor": true,
+        "swap-icon-label": false,
+        "cursor": true,
+        "format": "{icon}",
+        "format-icons": {
+            "default": "",
+            "active": "",
+            "visible": "",
+            "urgent": "",
+            "empty": "",
+            "persistent": ""
+        },
+        "persistent-workspaces": {
+            "*": 5
+        }
+    },
+
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 60,
+        "tooltip": false
+    },
+
+    "clock": {
+        "timezone": "America/Sao_Paulo",
+        "format": " {:%H:%M  %d/%m}",
+        "tooltip": true,
+        "tooltip-format": "{calendar}",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span size='xx-large'><b>{}</b></span>",
+                "weekdays": "<span size='x-large'><b>{}</b></span>",
+                "days": "<span size='x-large'>{}</span>",
+                "weeks": "<span size='small'><b> w{}</b></span>",
+                "today": "<span size='xx-large'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+
+    "tray": {
+        "icon-size": 13,
+        "spacing": 10,
+        "cursor": true
+    },
+
+    "memory": {
+        "interval": 30,
+        "format": "{used:0.1f}G / {total:0.1f}G ",
+        "tooltip": false
+    },
+
+    "custom/cava": {
+        "exec": "~/.config/waybar/scripts/cava.sh",
+        "format": "{}",
+        "tooltip": false
+    },
+
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-muted": "  Muted",
+        "on-click": "pavucontrol",
+        "on-scroll-up": "swayosd-client --output-volume raise",
+        "on-scroll-down": "swayosd-client --output-volume lower",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        }
+    },
+
+    "custom/weather": {
+        "exec": "~/.config/waybar/scripts/wittr.sh",
+        "return-type": "json",
+        "format": "{}",
+        "tooltip": true,
+        "interval": 900
+    },
+
+    "network": {
+        "format-wifi": "  {essid}",
+        "format-ethernet": " ",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "⚠ ",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format": "{ifname} via {gwaddr}"
+    },
+
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 16
+        },
+        "format": "{icon}   {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "custom/power": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "~/.config/hypr/scripts/power_menu.sh"
+    }
+}

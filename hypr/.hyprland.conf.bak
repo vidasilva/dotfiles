@@ -1,0 +1,179 @@
+# hypr/hyprland.conf
+
+monitor=,preferred,auto,auto
+
+exec-once = ~/.config/waybar/scripts/launch.sh
+exec-once = hyprpaper & hyprsunset & hypridle
+exec-once = swayosd-server &
+exec-once = dunst &
+
+$terminal = kitty
+$menu = wofi
+$browser = firefox
+
+general {
+    gaps_in = 5
+    gaps_out = 5
+    border_size = 2
+    layout = dwindle
+    allow_tearing = false
+    col.active_border = rgb(bd93f9)
+    col.inactive_border = rgba(44475aaa)
+}
+
+decoration {
+    rounding = 3
+    active_opacity = 0.95
+    inactive_opacity = 0.90
+    shadow {
+        enabled = true
+        range = 90
+        offset = 1 2
+        render_power = 3
+        scale = 0.97
+        color = rgba(1E202966)
+    }
+    blur {
+        enabled = true
+        size = 3
+        passes = 1
+        vibrancy = 0.1696
+    }
+}
+
+animations {
+    enabled = true
+    bezier = linear, 0.0, 0.0, 1.0, 1.0
+    animation = workspaces, 1, 8, default, slidevert
+    animation = windows, 1, 8, default, popin
+    animation = fade, 1, 8, default
+}
+
+dwindle {
+    preserve_split = true
+}
+
+master {
+    new_status = master
+}
+
+misc {
+    force_default_wallpaper = -1
+    disable_hyprland_logo = false
+}
+
+input {
+    kb_layout = br
+    kb_variant = thinkpad
+    kb_model = 
+    kb_options =
+    kb_rules =
+    numlock_by_default = true
+
+    follow_mouse = 1
+    sensitivity = 0
+}
+
+###################
+### KEYBINDINGS ###
+###################
+
+$mainMod = SUPER
+
+bind = $mainMod, Escape, exec, hyprlock
+bind = $mainMod CTRL, Delete, exec, ~/.config/hypr/scripts/power_menu.sh
+
+bind = $mainMod, T, exec, $terminal
+bind = $mainMod, Return, exec, ~/.config/wofi/scripts/launch.sh
+bind = $mainMod, B, exec, $browser
+
+bind = $mainMod, Backspace, killactive,
+bind = $mainMod, C, killactive,
+
+bind = $mainMod, V, togglefloating,
+bind = $mainMod, P, pseudo,
+bind = $mainMod, ccedilla, layoutmsg, togglesplit
+
+# Example special workspace (scratchpad)
+bind = $mainMod, S, togglespecialworkspace, magic
+bind = $mainMod SHIFT, S, movetoworkspace, special:magic
+
+# Move focus with mainMod + arrow keys
+bind = $mainMod, Left, movefocus, l
+bind = $mainMod, H, movefocus, l
+bind = $mainMod, Right, movefocus, r
+bind = $mainMod, L, movefocus, r
+bind = $mainMod, Up, movefocus, u
+bind = $mainMod, K, movefocus, u
+bind = $mainMod, Down, movefocus, d
+bind = $mainMod, J, movefocus, d
+
+# Switch workspaces with mainMod + [0-9]
+bind = $mainMod, 1, workspace, 1
+bind = $mainMod, 2, workspace, 2
+bind = $mainMod, 3, workspace, 3
+bind = $mainMod, 4, workspace, 4
+bind = $mainMod, 5, workspace, 5
+bind = $mainMod, 6, workspace, 6
+bind = $mainMod, 7, workspace, 7
+bind = $mainMod, 8, workspace, 8
+bind = $mainMod, 9, workspace, 9
+bind = $mainMod, 0, workspace, 10
+
+bind = $mainMod ALT, Up, workspace, -1
+bind = $mainMod ALT, Down, workspace, +1
+bind = $mainMod ALT, K, workspace, -1
+bind = $mainMod ALT, J, workspace, +1
+
+bind = $mainMod ALT, mouse_up, workspace, +1
+bind = $mainMod ALT, mouse_down, workspace, -1
+
+bind = $mainMod SHIFT, 1, movetoworkspace, 1
+bind = $mainMod SHIFT, 2, movetoworkspace, 2
+bind = $mainMod SHIFT, 3, movetoworkspace, 3
+bind = $mainMod SHIFT, 4, movetoworkspace, 4
+bind = $mainMod SHIFT, 5, movetoworkspace, 5
+bind = $mainMod SHIFT, 6, movetoworkspace, 6
+bind = $mainMod SHIFT, 7, movetoworkspace, 7
+bind = $mainMod SHIFT, 8, movetoworkspace, 8
+bind = $mainMod SHIFT, 9, movetoworkspace, 9
+bind = $mainMod SHIFT, 0, movetoworkspace, 10
+
+bind = $mainMod SHIFT, Up, movetoworkspace, -1
+bind = $mainMod SHIFT, Down, movetoworkspace, +1
+bind = $mainMod SHIFT, K, movetoworkspace, -1
+bind = $mainMod SHIFT, J, movetoworkspace, +1
+
+bind = $mainMod SHIFT, mouse_up, movetoworkspace, +1
+bind = $mainMod SHIFT, mouse_down, movetoworkspace, -1
+
+bind = $mainMod CTRL, Left, movewindow, l
+bind = $mainMod CTRL, H, movewindow, l
+bind = $mainMod CTRL, Right, movewindow, r
+bind = $mainMod CTRL, L, movewindow, r
+bind = $mainMod CTRL, Up, movewindow, u
+bind = $mainMod CTRL, K, movewindow, u
+bind = $mainMod CTRL, Down, movewindow, d
+bind = $mainMod CTRL, J, movewindow, d
+
+# Move/resize windows with mainMod + LMB/RMB and dragging
+bindm = $mainMod, mouse:272, movewindow
+bindm = $mainMod, mouse:273, resizewindow
+
+# Volume with SwayOSD (Visual Popup)
+bindl = , XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise
+bindl = , XF86AudioLowerVolume, exec, swayosd-client --output-volume lower
+bindl = , XF86AudioMute,        exec, swayosd-client --output-volume mute-toggle
+bindl = , XF86AudioMicMute,     exec, swayosd-client --input-volume mute-toggle
+
+# LCD brightness
+bindel = ,XF86MonBrightnessDown, exec, hyprctl hyprsunset gamma -10
+bindel = ,XF86MonBrightnessUp, exec, hyprctl hyprsunset gamma +10
+
+# (requires playerctl)
+bindl = , XF86AudioNext, exec, playerctl next
+bindl = , XF86AudioPause, exec, playerctl play-pause
+bindl = , XF86AudioPlay, exec, playerctl play-pause
+bindl = , XF86AudioPrev, exec, playerctl previous
+
+bind = , Print, exec, ~/.config/hypr/scripts/screenshot.sh

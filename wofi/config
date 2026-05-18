@@ -1,0 +1,13 @@
+allow_images=true
+allow_markup=true
+width=500
+lines=6
+location=0
+prompt=Search...
+insensitive=true
+hide_scroll=true
+dynamic_lines=true
+single_click=false
+normal_window=true
+no_actions=true
+close_on_focus_loss=false

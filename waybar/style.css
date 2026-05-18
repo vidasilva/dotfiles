@@ -1,0 +1,162 @@
+@define-color bg #282a36;
+@define-color fg #f8f8f2;
+@define-color border #44475a;
+@define-color comment #6272a4;
+@define-color purple #bd93f9;
+@define-color green #50fa7b;
+@define-color yellow #f1fa8c;
+@define-color red #ff5555;
+@define-color cyan #8be9fd;
+@define-color orange #ffb86c;
+@define-color pink #ff79c6;
+@define-color spotify #1db954;
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "CaskaydiaCove Nerd Font";
+    font-size: 12.5px;
+    font-weight: bold;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: @fg;
+}
+
+tooltip {
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+tooltip label {
+    background: @bg;
+    color: @fg;
+    border: 2px solid @purple;
+    border-radius: 8px;
+    padding: 18px 24px;
+    font-size: 32px;
+}
+
+#clock,
+#workspaces,
+#window,
+#network,
+#pulseaudio,
+#battery,
+#memory,
+#tray,
+#custom-weather,
+#custom-launcher,
+#custom-cava,
+#custom-power,
+#custom-spotify,
+#custom-notifications {
+    background-color: @bg;
+    border: 2px solid @border;
+    border-radius: 10px;
+    opacity: 0.95;
+}
+
+#clock,
+#workspaces {
+    margin: 10px 5px 10px 10px;
+    padding: 0 15px;
+}
+
+#window,
+#custom-launcher,
+#custom-power,
+#custom-cava,
+#custom-spotify {
+    margin: 10px 5px;
+    padding: 0 15px;
+}
+
+#tray,
+#memory,
+#network,
+#pulseaudio,
+#custom-weather,
+#battery,
+#custom-notifications {
+    margin: 10px 10px 10px 5px;
+    padding: 0 15px;
+}
+
+#custom-launcher,
+#custom-power {
+    padding: 0 21px 0 15px;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    color: @comment;
+}
+
+#workspaces button.active {
+    color: @purple;
+}
+
+#clock {
+    color: @fg;
+}
+
+#battery {
+    color: @green;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: @yellow;
+}
+
+#battery.warning:not(.charging),
+#battery.critical:not(.charging) {
+    color: @red;
+}
+
+#network {
+    color: @cyan;
+}
+
+#pulseaudio {
+    color: @orange;
+}
+
+#pulseaudio.muted {
+    color: @comment;
+}
+
+#custom-weather {
+    color: @pink;
+}
+
+#custom-launcher,
+#custom-power {
+    color: @green;
+}
+
+#custom-launcher {
+    font-size: 16px;
+}
+
+#custom-launcher:hover {
+    background-color: @purple;
+    color: @bg;
+}
+
+#custom-power:hover {
+    background-color: @red;
+    color: @bg;
+}
+
+#custom-cava {
+    color: @purple;
+}
+
+#custom-spotify {
+    color: @spotify;
+}
