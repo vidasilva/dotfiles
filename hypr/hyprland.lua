@@ -25,15 +25,13 @@ local mainMod = "SUPER"
 ----------------
 
 hl.on("hyprland.start", function()
-  hl.exec_cmd("hyprctl setenv XCURSOR_THEME rose-pine-cursor")
-  hl.exec_cmd("hyprctl setenv XCURSOR_SIZE 24")
-  hl.exec_cmd("hyprctl setcursor rose-pine-cursor 24")
   hl.exec_cmd("~/.config/waybar/scripts/launch.sh")
   hl.exec_cmd("hyprpaper")
   hl.exec_cmd("hyprsunset")
   hl.exec_cmd("hypridle")
-  hl.exec_cmd("swayosd-server &")
-  hl.exec_cmd("dunst &")
+  hl.exec_cmd("systemctl --user start hyprpolkitagent")
+  hl.exec_cmd("swayosd-server")
+  hl.exec_cmd("dunst")
 end)
 
 ----------------
@@ -144,6 +142,26 @@ hl.animation({
   bezier = "linear",
 })
 
+hl.window_rule({
+  name = "kitty-on-workspace-3",
+  match = {
+    class = "kitty"
+  }
+})
+
+hl.window_rule({
+  name = "firefox-on-workspace-2",
+  match = {
+    class = "firefox"
+  }
+})
+
+hl.window_rule({
+  name = "steam-on-workspace-1",
+  match = {
+    class = "steam"
+  }
+})
 ----------------
 -- KEYBINDINGS
 ----------------
@@ -197,8 +215,8 @@ hl.bind(mainMod .. " + ALT + Down", hl.dsp.focus({ workspace = "+1" }))
 hl.bind(mainMod .. " + ALT + K", hl.dsp.focus({ workspace = "-1" }))
 hl.bind(mainMod .. " + ALT + J", hl.dsp.focus({ workspace = "+1" }))
 
-hl.bind(mainMod .. " + ALT + mouse_up", hl.dsp.focus({ workspace = "+1" }))
-hl.bind(mainMod .. " + ALT + mouse_down", hl.dsp.focus({ workspace = "-1" }))
+hl.bind(mainMod .. " + ALT + mouse_up", hl.dsp.focus({ workspace = "-1" }))
+hl.bind(mainMod .. " + ALT + mouse_down", hl.dsp.focus({ workspace = "+1" }))
 
 -- Move window to relative workspace
 hl.bind(mainMod .. " + SHIFT + Up", hl.dsp.window.move({ workspace = "-1" }))
@@ -206,8 +224,8 @@ hl.bind(mainMod .. " + SHIFT + Down", hl.dsp.window.move({ workspace = "+1" }))
 hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ workspace = "-1" }))
 hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ workspace = "+1" }))
 
-hl.bind(mainMod .. " + SHIFT + mouse_up", hl.dsp.window.move({ workspace = "+1" }))
-hl.bind(mainMod .. " + SHIFT + mouse_down", hl.dsp.window.move({ workspace = "-1" }))
+hl.bind(mainMod .. " + SHIFT + mouse_up", hl.dsp.window.move({ workspace = "-1" }))
+hl.bind(mainMod .. " + SHIFT + mouse_down", hl.dsp.window.move({ workspace = "+1" }))
 
 -- Move windows directionally
 hl.bind(mainMod .. " + CTRL + Left", hl.dsp.window.move({ direction = "left" }))

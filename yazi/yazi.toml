@@ -1,0 +1,17 @@
+[opener]
+pdf = [
+  { run = 'zathura %s', orphan = true, desc = "Open with Zathura" }
+]
+
+edit = [
+  { run = 'nvim %s', block = true, desc = "Edit with Neovim" }
+]
+
+docx = [
+  { run = 'LibreOffice Writer %s', orphan = true, desc = "Open with LibreOffice Writer" }
+]
+
+[open]
+prepend_rules = [
+  { mime = "application/pdf", use = "pdf" }
+]

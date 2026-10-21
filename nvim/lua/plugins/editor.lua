@@ -19,7 +19,7 @@ return {
                     relativenumber = true,
                 },
                 renderer = { group_empty = true },
-                filters = { dotfiles = false },
+                filters = { dotfiles = true },
                 actions = {
                     open_file = {
                         quit_on_open = true,

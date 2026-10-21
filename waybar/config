@@ -48,8 +48,10 @@
             "persistent": ""
         },
         "persistent-workspaces": {
-            "*": 5
-        }
+            "*": 1
+        },
+        "on-scroll-up": "~/.config/waybar/scripts/workspaceup.sh",
+        "on-scroll-down": "~/.config/waybar/scripts/workspacedown.sh"
     },
 
     "hyprland/window": {
